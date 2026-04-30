@@ -149,9 +149,14 @@ The frontend uses the existing `/api/chat` flow and sends persona-specific user 
 
 ## Screenshots
 
-- Home / chat interface: `[Add screenshot here]`
-- Persona switching view: `[Add screenshot here]`
-- Example conversation: `[Add screenshot here]`
+### Home / chat interface
+![Home / chat interface](image.png)
+
+### Persona switching view
+![Persona switching view](image-1.png)
+
+### Example conversation
+![Example conversation](image-2.png)
 
 ## Notes for Evaluation
 
