@@ -144,8 +144,8 @@ The frontend uses the existing `/api/chat` flow and sends persona-specific user 
 
 ## Deployed Link
 
-- Deployed app: `[Add deployed link here]`
-- Backend API: `[Add backend deployment link here]`
+- Deployed app: `https://persona-based-ai-chatbot-ten.vercel.app/`
+- Backend API: `https://persona-based-ai-chatbot-t0hw.onrender.com`
 
 ## Screenshots
 
