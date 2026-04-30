@@ -1,0 +1,220 @@
+:root {
+  font-family: "Manrope", "Segoe UI", sans-serif;
+  color: #10231c;
+  background:
+    radial-gradient(circle at top left, rgba(255, 223, 172, 0.9), transparent 28%),
+    linear-gradient(180deg, #f7f3e8 0%, #ebf4ef 100%);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+code {
+  font-family: "IBM Plex Mono", "SFMono-Regular", monospace;
+}
+
+.app-shell {
+  width: min(1040px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 3rem 0 4rem;
+}
+
+.hero {
+  padding: 1.5rem 0 2rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  color: #9c4f2f;
+  font-weight: 700;
+}
+
+.hero h1 {
+  margin: 0;
+  max-width: 12ch;
+  font-size: clamp(2.5rem, 6vw, 4.6rem);
+  line-height: 0.96;
+}
+
+.lede {
+  max-width: 44rem;
+  margin: 1rem 0 0;
+  font-size: 1.1rem;
+  color: #39554c;
+}
+
+.panel {
+  margin-top: 1.5rem;
+  padding: 1.4rem;
+  border: 1px solid rgba(16, 35, 28, 0.08);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 20px 50px rgba(59, 83, 73, 0.1);
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.panel-header p {
+  margin: 0.35rem 0 0;
+  color: #48675d;
+}
+
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.persona-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  align-items: flex-start;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid rgba(16, 35, 28, 0.12);
+  border-radius: 18px;
+  background: #fff9ef;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    transform 140ms ease,
+    border-color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.persona-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(156, 79, 47, 0.4);
+  box-shadow: 0 12px 24px rgba(156, 79, 47, 0.08);
+}
+
+.persona-card.active {
+  border-color: #9c4f2f;
+  background: #fff1d7;
+}
+
+.persona-card span {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.persona-card small {
+  color: #4e675f;
+}
+
+.chat-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1.25rem;
+}
+
+.chat-form label {
+  font-weight: 700;
+}
+
+.chat-form textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 10rem;
+  padding: 1rem;
+  border: 1px solid rgba(16, 35, 28, 0.18);
+  border-radius: 18px;
+  background: rgba(252, 250, 245, 0.95);
+  color: inherit;
+}
+
+.chat-form textarea:focus {
+  outline: 2px solid rgba(156, 79, 47, 0.2);
+  border-color: #9c4f2f;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.form-actions button {
+  padding: 0.9rem 1.2rem;
+  border: 0;
+  border-radius: 999px;
+  background: #10231c;
+  color: #f7f3e8;
+  cursor: pointer;
+}
+
+.form-actions button:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.status {
+  margin: 1rem 0 0;
+  font-weight: 600;
+}
+
+.status.error {
+  color: #a02f2f;
+}
+
+.response-card {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  background: #f0f7f3;
+}
+
+.response-card p {
+  margin: 0;
+}
+
+.response-label {
+  margin-bottom: 0.45rem;
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #60786f;
+}
+
+@media (max-width: 780px) {
+  .persona-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .app-shell {
+    width: min(100% - 1rem, 1040px);
+    padding-top: 2rem;
+  }
+
+  .panel {
+    padding: 1rem;
+  }
+}
+
