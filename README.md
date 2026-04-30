@@ -1,65 +1,160 @@
 # Persona-Based AI Chatbot
 
-Standard full-stack web app scaffold using only:
+## Overview
 
-- React + Vite for the frontend
-- Node.js + Express for the backend
-- OpenAI API on the backend only
+Persona-Based AI Chatbot is a full-stack web application built for a persona-driven conversational AI assignment. The project pairs a React + Vite frontend with an Express backend that calls the Gemini API. Users can switch between three distinct personas, send prompts through a shared chat interface, and receive responses shaped by persona-specific backend prompts.
 
-This scaffold intentionally does not include:
+The project is intentionally scoped to focus on prompt design, persona consistency, and clean interaction behavior rather than deployment complexity or extra platform features.
 
-- External ML deployment tooling
-- Authentication
-- A database
-- Deployment configuration
+## Features
+
+- Three supported personas: `Anshuman`, `Abhimanyu`, and `Kshitij`
+- Persona-specific backend prompts stored in separate files
+- Persona switcher with conversation reset behavior
+- Chat-style frontend with suggestion chips and typing/loading state
+- Express API endpoint for persona-based chat requests
+- Friendly frontend error handling
+- Clean separation between frontend, backend, and prompt assets
+
+## Tech Stack
+
+- Frontend: React 19, Vite
+- Backend: Node.js, Express
+- AI integration: Google Gemini via `@google/genai`
+- Environment management: `dotenv`
 
 ## Project Structure
 
 ```text
 .
-├── client/
-├── server/
-├── .env.example
-├── .gitignore
-├── prompts.md
-└── reflection.md
+|-- client/
+|   `-- .env.example
+|-- server/
+|-- .env.example
+|-- prompts.md
+|-- reflection.md
+`-- README.md
 ```
 
-## Frontend
+## Setup
 
-The frontend lives in `client/` and is a small Vite React starter with a persona selector and a basic chat form.
+### Prerequisites
 
-Typical commands:
+- Node.js 20 or later
+- npm
+- A valid Gemini API key
+
+### Frontend Setup
 
 ```bash
 cd client
 npm install
+```
+
+### Backend Setup
+
+```bash
+cd server
+npm install
+```
+
+## Environment Variables
+
+Create a `.env` file inside `server/` and define the following variables:
+
+```env
+GEMINI_API_KEY=your_key_here
+PORT=5000
+CLIENT_ORIGIN=http://localhost:5173
+```
+
+Notes:
+
+- The Gemini API key should exist only in `server/.env`.
+- `.env.example` is included as the backend reference template.
+- `client/.env.example` is included for optional frontend deployment configuration.
+- Real API keys are not committed to the repository.
+
+Optional frontend environment variable:
+
+```env
+VITE_API_BASE_URL=
+```
+
+- Leave `VITE_API_BASE_URL` empty for local development so the Vite `/api` proxy continues to work.
+- Set `VITE_API_BASE_URL` in production when the frontend and backend are deployed on different domains.
+
+## Run Locally
+
+### Start the Backend
+
+```bash
+cd server
 npm run dev
 ```
 
-## Backend
+The backend runs on `http://127.0.0.1:5000` by default.
 
-The backend lives in `server/` and exposes:
+### Start the Frontend
+
+```bash
+cd client
+npm run dev
+```
+
+The frontend runs on `http://127.0.0.1:5173` by default and proxies `/api` requests to the backend.
+
+## Deployment
+
+### Frontend on Vercel
+
+1. Import the `client/` directory as a Vercel project.
+2. Use the default Vite build settings:
+   - Build command: `npm run build`
+   - Output directory: `dist`
+3. Set `VITE_API_BASE_URL` only if your backend is deployed on a separate domain.
+4. Redeploy after adding or changing environment variables.
+
+### Backend on Render or Railway
+
+1. Deploy the `server/` directory as a Node service.
+2. Use:
+   - Build command: `npm install`
+   - Start command: `npm start`
+3. Add the required environment variables:
+   - `GEMINI_API_KEY`
+   - `PORT` (usually provided automatically by the platform)
+   - `CLIENT_ORIGIN` set to your deployed frontend URL
+4. After deployment, copy the backend public URL into the frontend `VITE_API_BASE_URL` if the frontend is hosted separately.
+
+## API Notes
+
+The backend currently exposes:
 
 - `GET /api/health`
 - `GET /api/personas`
 - `POST /api/chat`
 
-Persona prompts are stored as separate files in `server/prompts/`.
+The frontend uses the existing `/api/chat` flow and sends persona-specific user input without exposing prompt text or API keys in the browser.
 
-Typical commands:
+## Prompt and Reflection Documents
 
-```bash
-cd server
-npm install
-npm run dev
-```
+- `prompts.md` documents the final persona prompts and the reasoning behind their design.
+- `reflection.md` captures a short project reflection covering what worked, what the GIGO principle taught, and what could be improved next.
 
-Use the variables listed in `.env.example` to populate your environment before starting the server.
+## Deployed Link
 
-## Next Build Steps
+- Deployed app: `[Add deployed link here]`
+- Backend API: `[Add backend deployment link here]`
 
-1. Install dependencies in `client/` and `server/`.
-2. Add your real OpenAI API key to your environment.
-3. Expand the chat UX and refine the persona prompts.
-4. Add validation and error handling polish as needed.
+## Screenshots
+
+- Home / chat interface: `[Add screenshot here]`
+- Persona switching view: `[Add screenshot here]`
+- Example conversation: `[Add screenshot here]`
+
+## Notes for Evaluation
+
+- Persona logic is handled on the backend through separate prompt files.
+- The frontend is designed to make persona selection and switching behavior visible and testable.
+- Prompt design, few-shot examples, and persona consistency are core parts of the project scope.
