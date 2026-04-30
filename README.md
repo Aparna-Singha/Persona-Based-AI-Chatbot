@@ -64,7 +64,6 @@ Create a `.env` file inside `server/` and define the following variables:
 
 ```env
 GEMINI_API_KEY=your_key_here
-PORT=5000
 CLIENT_ORIGIN=http://localhost:5173
 ```
 
